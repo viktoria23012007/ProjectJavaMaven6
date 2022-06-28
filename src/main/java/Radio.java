@@ -1,6 +1,6 @@
 package ru.netology.smart_home;
 
-public  class  Radio {
+public class Radio {
     private int currentStation;
     private int currentVolume;
     private int minVolume = 0;
@@ -8,7 +8,7 @@ public  class  Radio {
     private int firstStation = 0;
     private int lastStation = 9;
 
-    // Switch radio stations
+    // Переключение радиостанций
 
     public void nextStation() {
         if (currentStation < lastStation) {
