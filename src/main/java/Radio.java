@@ -1,14 +1,42 @@
 package ru.netology.smart_home;
 
 public class Radio {
-    private int currentStation;
     private int currentVolume;
-    private int minVolume = 0;
-    private int maxVolume = 10;
-    private int firstStation = 0;
-    private int lastStation = 9;
+    private final int minVolume = 0;
+    private final int maxVolume = 100;
+
+    private int currentStation;
+    private int numberOfStations = 10;
+    private final int firstStation = 0;
+    private int lastStation = calculateLastStation();
+
+    // Конструктор с полями по-умолчанию (дефолтный)
+    public Radio() {
+    }
+
+    // Конструктор с указанием количества радиостанций
+    public Radio(int numberOfStations) {
+        this.numberOfStations = numberOfStations;
+        this.lastStation = calculateLastStation();
+    }
+
+    // Конструктор с указанием текущих значений (для тестов)
+    public Radio(int numberOfStations, int currentStation, int currentVolume) {
+        this.numberOfStations = numberOfStations;
+        this.currentVolume = currentVolume;
+        this.currentStation = currentStation;
+        this.lastStation = calculateLastStation();
+    }
 
     // Переключение радиостанций
+
+    public int calculateLastStation() {
+        return firstStation + numberOfStations - 1;
+    }
+
+    public int getLastStation() {
+        return lastStation;
+    }
 
     public void nextStation() {
         if (currentStation < lastStation) {
@@ -40,18 +68,10 @@ public class Radio {
         this.currentStation = currentStation;
     }
 
+    // Переключение громкости звука
+
     public int getCurrentVolume() {
         return currentVolume;
-    }
-
-    public void setCurrentVolume(int currentVolume) {
-        if (currentVolume < minVolume) {
-            return;
-        }
-        if (currentVolume > maxVolume) {
-            return;
-        }
-        this.currentVolume = currentVolume;
     }
 
     public void increaseVolume() {

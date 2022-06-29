@@ -52,7 +52,7 @@
                         </goals>
                     </execution>
                     <execution>
-                        <id>check</id>
+                        <id>check-1</id>
                         <goals>
                             <goal>check</goal>
                         </goals>
